@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# About:
+# I like to selectively keep shell commands worth remembering in a "notes" file
+
+cat ~/.bash_history | tail -1 | awk '{print "# "$0}' >> notes

@@ -1,0 +1,60 @@
+#!/usr/bin/env perl
+
+# About:
+# print rows of the first file argument if there's a matching key in the first column of the second file argument 
+
+my $usage = <<_EOUSAGE_;
+
+###########################################################################
+#
+#	tableselect takes two tab-delimited text files as arguments and
+#	and prints the rows of the first file if and only if there exists
+#	a row in the second file that has an identical first field.
+#
+#	Usage:
+#
+#	tableselect file1 file2
+#
+#	Example:
+#	
+#	Suppose
+#	
+#	\$ cat file1
+#	a	3	4
+#	b	34
+#	a	sdf
+#	2e	23g
+#	z	a
+#
+#	\$ cat file2
+#	z	2343
+#	a	a1a
+#	q	12
+#
+#	Then
+#	\$ tableselect file1 file2
+#	a	3	4
+#	a	sdf
+#	z	a
+#
+#	Author:
+#
+# 	V Trifonov 2012. contact: vladot\@c2b2.columbia.edu
+#  
+################################################################################################################
+
+_EOUSAGE_
+
+if ( $ARGV[0] eq "-h" || $ARGV[0] eq "-help" || $ARGV[0] eq "--help" || scalar(@ARGV) == 0 ) { print $usage; exit; }
+
+%h = map {$_ => 1} split(/\s/, `cat $ARGV[1]`);
+
+open $ifile, '<', $ARGV[0];
+
+while (<$ifile>) 
+{
+	/^(\S*)/;
+	print $_ if $h{$1};
+}
+
+close $ifile;

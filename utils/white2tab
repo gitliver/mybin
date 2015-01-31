@@ -1,0 +1,39 @@
+#!/usr/bin/env perl
+
+# replace white space (any combination of spaces and tabs) with tabs
+
+my $usage = <<_EOUSAGE_;
+
+################################################################################################################
+#
+#	replace white space (any combination of spaces and tabs) with tabs	
+#
+#	Usage:
+#
+#	white2tab <file>
+#	cat file | white2tab
+#
+#	Example:
+#	
+#	Suppose
+#	
+#	\$ cat file
+#	1 a
+#	2   c
+#	
+#	Then
+#	\$ white2tab file
+#	1	a
+#	2	c
+#
+################################################################################################################
+
+_EOUSAGE_
+
+if ( $ARGV[0] eq "-h" || $ARGV[0] eq "-help" || $ARGV[0] eq "--help" ) { print $usage; exit; }
+
+while (<>)
+{
+	s/(\s)+/\t/g; 
+	print $_,"\n"
+}

@@ -1,0 +1,72 @@
+#!/usr/bin/env perl
+
+# About:
+# break a file up into smaller files whose names are what was in the first col
+
+# Useage:
+# cat example/file_col1split.txt | col1split "%s"
+
+my $usage = <<_EOUSAGE_;
+
+################################################################################################################
+#
+# 	col1split splits a file into smaller files according to what's in the first column. 
+# 	Every row with the same first column goes into the same subfile.
+#
+#	Usage:
+#
+#	cat file | col1split "%s"
+#
+#	Example:
+#
+#	Let's examine a file junk such that
+#	
+#	\$ cat junk
+#	1	a
+#	1	b
+#	2	c
+#	2	a
+#	X	asdf
+#	X	123
+#	
+#	Now let's make some directories:
+#	mkdir -p dir/1 dir/2 dir/X
+#	
+#	In each directory, we want to create a file called 0. To run col1split the syntax is as follows:
+#	cat junk | col1split "dir/%s/0"
+#	
+#	Then
+#	\$ cat dir/1/0
+#	a
+#	b
+#	\$ cat dir/2/0
+#	c
+#	a
+#	\$ cat dir/X/0
+#	asdf
+#	123
+#
+#	Author:
+#
+# 	V Trifonov 2012. contact: vladot\@c2b2.columbia.edu
+#  
+################################################################################################################
+
+_EOUSAGE_
+
+if ( $ARGV[0] eq "-h" || $ARGV[0] eq "-help" || $ARGV[0] eq "--help" || scalar(@ARGV) == 0 ) { print $usage; exit; }
+
+%files={};
+while (<STDIN>) {
+	/([^\t]*)\t(.*)/;
+	if (!defined $files{$1}) {
+		$fn = sprintf($ARGV[0], $1);
+		print $fn."\n";
+		open my $fh, ">".$fn;
+		$files{$1} = $fh;
+	}
+	$fh = $files{$1};
+	if ($fh > 0) {
+		print $fh $2."\n";
+	}
+}

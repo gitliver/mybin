@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# cat a file in your path
+# by Albert
+
+file=$1
+
+cat $(which $file)
