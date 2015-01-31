@@ -1,22 +1,17 @@
 ##mybin
 Miscellaneous (mostly shell) scripts
 
-- bio
-
+- **bio**
 Biology- and bioinformatics-related
 
-- fun
-
+- **fun**
 Fun stuff
 
-- mac
-
+- **mac**
 Applescripts
 
-- utils
-
+- **utils**
 unix utilities
 
-- web
-
+- **web**
 web-related
