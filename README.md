@@ -11,7 +11,7 @@ Fun stuff
 Applescripts
 
 - **utils**
-unix utilities
+Unix utilities
 
 - **web**
-web-related
+Web-related
