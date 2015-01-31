@@ -1,0 +1,2 @@
+# mybin
+Miscellaneous shell scripts
