@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # About:
 # Add a line to number fields at the top of a text file

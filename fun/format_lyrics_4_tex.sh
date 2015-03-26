@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # About:
 # format lyrics (copied mostly from http://www.azlyrics.com) for LaTex, 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # About:
 # I like to selectively keep shell commands worth remembering in a "notes" file

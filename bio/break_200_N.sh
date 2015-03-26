@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 myhelp=$(cat <<_EOF_
 
