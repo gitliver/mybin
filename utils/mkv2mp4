@@ -1,0 +1,8 @@
+#!/bin/bash
+
+inputfile="$1"
+outputfile=$( echo "${inputfile}" | sed 's/ /_/g; s/\.mkv/\.mp4/g;' )
+
+ffmpeg -i "${inputfile}" -acodec mp3 -vcodec mpeg4 tmp.avi
+ffmpeg -i tmp.avi $outputfile
+rm tmp.avi

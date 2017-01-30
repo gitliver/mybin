@@ -1,0 +1,7 @@
+#!/bin/bash
+
+inputfile="$1"
+# outputfile=$( echo "${inputfile}" | sed 's/ /_/g; s/\.mkv/\.mp3/g; s/\.webm/\.mp3/g; s/\.mp4/\.mp3/g;' )
+outputfile=$( echo "${inputfile}" | sed 's/ /_/g; s/\.mkv/\.mp3/g; s/\.webm/\.mp3/g; s/\.mp4/\.mp3/g; s/\.ogg/\.mp3/g; s/\.opus/\.mp3/g; s/\.m4a/\.mp3/g;' )
+
+ffmpeg -i "${inputfile}" $outputfile

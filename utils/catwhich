@@ -3,6 +3,10 @@
 # cat a file in your path
 # by Albert
 
-file=$1
+file=$(which $1 2>/dev/null)
 
-cat $(which $file)
+if [[ -f $file ]]; then
+    cat $file
+else
+    echo "file \"$1\" does not exist!"
+fi
