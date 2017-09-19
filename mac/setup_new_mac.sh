@@ -6,7 +6,7 @@
 echo "*** install brew ***"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-for i in wget coreutils tmux youtube-dl imagemagick gpg python3; do
+for i in wget coreutils tmux youtube-dl imagemagick gpg python3 postgres; do
 	echo "*** install "${i}" ***"; 
 	brew install ${i}; 
 done
